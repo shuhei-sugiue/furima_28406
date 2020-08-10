@@ -4,14 +4,16 @@
 
 ## users テーブル
 
-| Colum     | Type     | Options      |
-| --------- | -------- | ------------ |
-| nickname  | string   | null: false  |
-| email     | string   | null: false  |
-| password  | string   | null: false  |
-| name      | string   | null: false  |
-| kanan_ame | string   | null: false  |
-| birthday  | integer  | null: false  |
+| Colum            | Type     | Options      |
+| ---------------- | -------- | ------------ |
+| nickname         | string   | null: false  |
+| email            | string   | null: false  |
+| password         | string   | null: false  |
+| last_name        | string   | null: false  |
+| first_name       | string   | null: false  |
+| last_name(kana)  | string   | null: false  |
+| first_name(kana) | string   | null: false  |
+| birthday         | date     | null: false  |
 
 ### Association
 
@@ -22,6 +24,8 @@
 
 | Colum       | Type       | Options      |
 | ----------- | ---------- | ------------ |
+| name        | string     | null: false  |
+| description | string      | null: false  |
 | price       | integer    | null: false  |
 | categories  | string     | null: false  |
 | state       | string     | null: false  |
@@ -51,12 +55,12 @@ has_one :address
 
 | Colum             | Type       | Options      |
 | ----------------- | ---------- | ------------ |
-| ship_to           | integer    | null: false  |
+| zip_code          | integer    | null: false |
 | province          | string     | null: false  |
 | municipal         | string     | null: false  |
 | street_number     | string     | null: false  |
 | building          | string     |              |
-| telephone         | integer    | null: false  |
+| telephone         | string     | null: false  |
 | purchaser_id      | references | null: false  |
 
 ### Association
