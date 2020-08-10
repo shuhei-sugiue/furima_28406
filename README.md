@@ -25,13 +25,8 @@
 | Colum       | Type       | Options      |
 | ----------- | ---------- | ------------ |
 | name        | string     | null: false  |
-| description | string      | null: false  |
+| description | string      | null: false |
 | price       | integer    | null: false  |
-| categories  | string     | null: false  |
-| state       | string     | null: false  |
-| charge      | string     | null: false  |
-| shipper     | string     | null: false  |
-| ship_date   | integer    | null: false  |
 | user_id     | references | null: false  |
 
 ### Association
