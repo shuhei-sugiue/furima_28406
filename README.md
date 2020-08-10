@@ -11,8 +11,8 @@
 | password         | string   | null: false  |
 | last_name        | string   | null: false  |
 | first_name       | string   | null: false  |
-| last_name(kana)  | string   | null: false  |
-| first_name(kana) | string   | null: false  |
+| last_name_kana   | string   | null: false  |
+| first_name_kana  | string   | null: false  |
 | birthday         | date     | null: false  |
 
 ### Association
@@ -22,12 +22,17 @@
 
 ## items テーブル
 
-| Colum       | Type       | Options      |
-| ----------- | ---------- | ------------ |
-| name        | string     | null: false  |
-| description | string      | null: false |
-| price       | integer    | null: false  |
-| user_id     | references | null: false  |
+| Colum               | Type       | Options      |
+| ------------------- | ---------- | ------------ |
+| name                | text       | null: false  |
+| description         | text       | null: false  |
+| price               | integer    | null: false  |
+| categories_id       | integer    | null: false  |
+| state_id            | integer    | null: false  |
+| charge_id           | integer    | null: false  |
+| shipper_id          | integer    | null: false  |
+| ship_date_id        | integer    | null: false  |
+| user                | references | null: false, foreign_key: true|
 
 ### Association
 
@@ -36,8 +41,8 @@
 
 ## purchasers テーブル
 
-| user_id    | references | null: false  |
-| item_id    | references | null: false  |
+| user    | references | null: false, foreign_key: true|
+| item    | references | null: false, foreign_key: true|
 
 ### Association
 
@@ -50,13 +55,13 @@ has_one :address
 
 | Colum             | Type       | Options      |
 | ----------------- | ---------- | ------------ |
-| zip_code          | integer    | null: false |
+| zip_code          | string     | null: false |
 | province          | string     | null: false  |
 | municipal         | string     | null: false  |
 | street_number     | string     | null: false  |
 | building          | string     |              |
 | telephone         | string     | null: false  |
-| purchaser_id      | references | null: false  |
+| purchaser         | references | null: false, foreign_key: true|
 
 ### Association
 belongs_to :purchaser
