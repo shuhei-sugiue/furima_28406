@@ -54,21 +54,21 @@ describe User, type: :modle do
     it 'emailは@を含む必要がある' do
       @user.email = '000000'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Email is invalid', 'Email is not included in the list')
+      expect(@user.errors.full_messages).to include("Email is invalid", "Password is invalid")
     end
     it '重複したemailが存在する場合登録できない' do
       @user.save
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
       another_user.valid?
-      expect(@user.errors.full_messages).to include('Email is not included in the list')
+      expect(@user.errors.full_messages).to include("Password is invalid")
     end
     it 'passwordは半角英数字混合であること' do
       @user.password = 'sssssss'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password",'Email is not included in the list', 'Password is invalid')
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is invalid")
     end
-    it 'passwprdは確認用を含めて２回入力すること' do
+    it 'passwordは確認用を含めて２回入力すること' do
       @user.password_confirmation = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
