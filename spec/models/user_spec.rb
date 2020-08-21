@@ -49,24 +49,24 @@ describe User, type: :modle do
     it 'passwordは6文字以上でなければならない' do
       @user.password = '00000'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password",'Password is too short (minimum is 6 characters)')
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", 'Password is too short (minimum is 6 characters)')
     end
     it 'emailは@を含む必要がある' do
       @user.email = '000000'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email is invalid", "Password is invalid")
+      expect(@user.errors.full_messages).to include('Email is invalid', 'Password is invalid')
     end
     it '重複したemailが存在する場合登録できない' do
       @user.save
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
       another_user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
+      expect(@user.errors.full_messages).to include('Password is invalid')
     end
     it 'passwordは半角英数字混合であること' do
       @user.password = 'sssssss'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is invalid")
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", 'Password is invalid')
     end
     it 'passwordは確認用を含めて２回入力すること' do
       @user.password_confirmation = ''
