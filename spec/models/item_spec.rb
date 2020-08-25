@@ -59,27 +59,27 @@ RSpec.describe Item, type: :model do
     it 'カテゴリーのidが1の場合は登録できない' do
       @item.category_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
     it '商品状態のidが1の場合は登録できない' do
       @item.state_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("State must be other than 1")
+      expect(@item.errors.full_messages).to include('State must be other than 1')
     end
     it '配送料のidが1の場合は登録できない' do
       @item.charge_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Charge must be other than 1")
+      expect(@item.errors.full_messages).to include('Charge must be other than 1')
     end
     it '発送元の地域のidが1の場合は登録できない' do
       @item.shipper_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipper must be other than 1")
+      expect(@item.errors.full_messages).to include('Shipper must be other than 1')
     end
     it '発送までの日数のidが1の場合は登録できない' do
       @item.ship_date_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Ship date must be other than 1")
+      expect(@item.errors.full_messages).to include('Ship date must be other than 1')
     end
   end
 end
