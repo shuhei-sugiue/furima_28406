@@ -1,4 +1,5 @@
 class PurchasersController < ApplicationController
+  before_action :correct_user, only: [:index]
 
   def index
     @item = Item.find(params[:item_id])
@@ -12,6 +13,13 @@ class PurchasersController < ApplicationController
       return redirect_to root_path
     else
       render 'index'
+    end
+  end
+
+  def correct_user
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to root_path
     end
   end
 
