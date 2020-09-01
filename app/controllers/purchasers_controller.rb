@@ -19,14 +19,20 @@ class PurchasersController < ApplicationController
     end
   end
 
+  private
+
   def correct_user
+  
     @item = Item.find(params[:item_id])
     if current_user.id == @item.user_id
       redirect_to root_path
     end
+    if @item.purchaser.item_id != nil
+      redirect_to root_path
+    end
   end
 
-  private
+  
 
   def purchaser_params
     params.permit(:token, :zip_code, :province, :municipal, :street_number, :building, :telephone, :item_id).merge(user_id: current_user.id)
