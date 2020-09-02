@@ -1,14 +1,13 @@
 class PurchasersController < ApplicationController
   before_action :correct_user, only: [:index]
+  before_action :item_find, only: [:index,:create]
 
   def index
-    @item = Item.find(params[:item_id])
   end
 
 
 
   def create 
-    @item = Item.find(params[:item_id])
     @purchaser = PurchaserAddress.new(purchaser_params)
     if @purchaser.valid?
       pay_item
@@ -22,7 +21,6 @@ class PurchasersController < ApplicationController
   private
 
   def correct_user
-  
     @item = Item.find(params[:item_id])
     if current_user.id == @item.user_id
       redirect_to root_path
@@ -32,6 +30,9 @@ class PurchasersController < ApplicationController
     end
   end
 
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
   
 
   def purchaser_params
