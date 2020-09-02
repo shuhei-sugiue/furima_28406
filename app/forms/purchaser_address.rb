@@ -9,6 +9,7 @@ class PurchaserAddress
       validates :municipal
       validates :street_number
       validates :province, numericality: { other_than: 0, message: "can't be blank" }
+      validates :token
     end
 
     def save
