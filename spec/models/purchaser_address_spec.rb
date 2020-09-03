@@ -6,8 +6,13 @@ RSpec.describe PurchaserAddress, type: :model do
       @address = FactoryBot.build(:purchaser_address)
       # @item.image = Rack::Test::UploadedFile.new(Rails.root.join('public/images/test_image.png'), 'image/png')
     end
-    it "zip_codeとprovince,municipal,street number,telephoneが存在すれば登録できる" do
+    it "zip_codeとprovince,municipal,street number,telephone,tokenが存在すれば登録できる" do
       expect(@address).to be_valid
+    end
+    it "tokenが空だと登録できない" do
+      @address.token = ""
+      @address.valid?
+      expect(@address.errors.full_messages).to include("Token can't be blank")
     end
     it "zip_codeが空だと登録できない" do
       @address.zip_code = ""

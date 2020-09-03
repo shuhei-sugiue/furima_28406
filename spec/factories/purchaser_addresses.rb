@@ -5,5 +5,6 @@ FactoryBot.define do
     municipal         {"奈良"}
     street_number     {"2-5"}
     telephone         {"08012345678"}
+    token             {"test"}
   end
 end
