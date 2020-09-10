@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :purchasers
+    resources :comments, only: :create
   end
 end
